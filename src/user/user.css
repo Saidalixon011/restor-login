@@ -1,23 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 :root {
   --primary: #dc2626; 
   --primary-hover: #b91c1c; 
   --primary-light: #fef2f2; 
   --primary-border: #fca5a5; 
-  
-  /* Davomat bo'limidagi yashil ranglar */
   --success: #16a34a;
   --success-hover: #15803d;
   --success-light: #f0fdf4;
   --success-border: #86efac;
-
   --bg-main: #ffffff; 
   --bg-card: #ffffff; 
   --bg-hover: #fef2f2; 
@@ -36,19 +31,16 @@
   --shadow-modal: 0 10px 25px rgba(220, 38, 38, 0.15);
   --transition: all 0.2s ease;
 }
-
 body {
   font-family: var(--font-family);
   background-color: var(--bg-main);
   color: var(--primary);
 }
-
 .user-container {
   min-height: 100vh;
   background: var(--bg-main);
   padding: 35px 20px;
 }
-
 .user-card-wide {
   max-width: 1150px;
   margin: 0 auto;
@@ -58,8 +50,6 @@ body {
   padding: 28px;
   border: 1px solid var(--border-color);
 }
-
-/* Header */
 .user-header {
   display: flex;
   justify-content: space-between;
@@ -70,7 +60,6 @@ body {
   gap: 16px;
   flex-wrap: wrap;
 }
-
 .header-title {
   display: flex;
   align-items: center;
@@ -78,7 +67,6 @@ body {
   flex: 1;
   min-width: 240px;
 }
-
 .icon-wrapper {
   width: 48px;
   height: 48px;
@@ -91,7 +79,6 @@ body {
   border: 1px solid var(--primary-border);
   flex-shrink: 0;
 }
-
 .header-title h2 {
   font-size: 22px;
   font-weight: 700;
@@ -99,19 +86,16 @@ body {
   color: var(--primary);
   line-height: 1.2;
 }
-
 .subtitle {
   font-size: 13px;
   color: var(--text-muted);
   margin-top: 4px;
 }
-
 .header-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .add-btn, .logout-btn {
   display: inline-flex;
   align-items: center;
@@ -125,28 +109,22 @@ body {
   transition: var(--transition);
   white-space: nowrap;
 }
-
 .add-btn {
   background: var(--primary);
   color: #ffffff;
   border: 1px solid var(--primary);
 }
-
 .add-btn:hover {
   background: var(--primary-hover);
 }
-
 .logout-btn {
   background: #ffffff;
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .logout-btn:hover {
   background: var(--primary-light);
 }
-
-/* Controls */
 .table-controls {
   display: flex;
   justify-content: space-between;
@@ -155,14 +133,12 @@ body {
   gap: 16px;
   flex-wrap: wrap;
 }
-
 .search-box {
   position: relative;
   flex: 1;
   min-width: 240px;
   max-width: 380px;
 }
-
 .search-icon {
   position: absolute;
   left: 12px;
@@ -171,7 +147,6 @@ body {
   color: var(--primary);
   pointer-events: none;
 }
-
 .search-box input {
   width: 100%;
   padding: 10px 12px 10px 38px;
@@ -183,12 +158,10 @@ body {
   color: var(--primary);
   transition: var(--transition);
 }
-
 .search-box input:focus {
   border-color: var(--primary-hover);
   box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
 }
-
 .stats-badge {
   background: var(--primary-light);
   color: var(--primary);
@@ -199,24 +172,19 @@ body {
   font-weight: 500;
   white-space: nowrap;
 }
-
 .stats-badge span {
   color: var(--primary);
   font-weight: 700;
 }
-
-/* Table Desktop Styling */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-
 .user-table-horizontal {
   width: 100%;
   border-collapse: collapse;
 }
-
 .user-table-horizontal th {
   background: var(--primary-light);
   color: var(--primary);
@@ -227,7 +195,6 @@ body {
   text-align: left;
   border-bottom: 1px solid var(--primary-border);
 }
-
 .user-table-horizontal td {
   padding: 14px 16px;
   text-align: left;
@@ -236,22 +203,18 @@ body {
   font-size: 14px;
   vertical-align: middle;
 }
-
 .user-table-horizontal tbody tr:hover {
   background-color: var(--bg-hover);
 }
-
 .user-row-disabled {
   background-color: var(--bg-disabled);
   opacity: 0.65;
 }
-
 .user-name-cell {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .avatar-circle {
   width: 36px;
   height: 36px;
@@ -265,7 +228,6 @@ body {
   font-size: 14px;
   flex-shrink: 0;
 }
-
 .badge {
   display: inline-block;
   padding: 4px 10px;
@@ -273,34 +235,28 @@ body {
   font-size: 12px;
   font-weight: 600;
 }
-
 .badge-active {
   background: #ffffff;
   color: var(--primary);
   border: 1px solid var(--primary);
 }
-
 .badge-deactive {
   background: var(--primary-light);
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .attendance-blocked span {
   font-size: 13px;
   color: var(--primary);
   font-style: italic;
   opacity: 0.8;
 }
-
 .action-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
-
-/* Davomat Tugmalari */
 .attendance-btn {
   display: inline-flex;
   align-items: center;
@@ -312,44 +268,35 @@ body {
   cursor: pointer;
   transition: var(--transition);
 }
-
-/* KELDI TUGMASI (Yashil) */
 .btn-present {
   background: var(--success-light);
   color: var(--success);
   border: 1px solid var(--success-border);
 }
-
 .btn-present:hover {
   background: var(--success);
   color: #ffffff;
 }
-
 .active-present {
   background: var(--success) !important;
   color: #ffffff !important;
   border-color: var(--success) !important;
   box-shadow: 0 2px 8px rgba(22, 163, 74, 0.25);
 }
-
-/* KELMADI TUGMASI (Qizil) */
 .btn-absent {
   background: #ffffff;
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .btn-absent:hover {
   background: var(--primary-light);
 }
-
 .active-absent {
   background: var(--primary) !important;
   color: #ffffff !important;
   border-color: var(--primary) !important;
   box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
 }
-
 .icon-btn {
   width: 34px;
   height: 34px;
@@ -363,28 +310,22 @@ body {
   transition: var(--transition);
   color: var(--primary);
 }
-
 .edit-icon-btn:hover {
   background: var(--primary-light);
 }
-
 .delete-icon-btn:hover {
   background: var(--primary);
   color: #ffffff;
 }
-
 .icon-btn:disabled {
   cursor: not-allowed;
   opacity: 0.4;
 }
-
 .no-data-box {
   text-align: center;
   padding: 40px;
   color: var(--text-muted);
 }
-
-/* Modals (Admin uslubida) */
 .admin-modal-overlay {
   position: fixed;
   inset: 0;
@@ -396,7 +337,6 @@ body {
   z-index: 1000;
   padding: 16px;
 }
-
 .admin-confirm-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -408,17 +348,14 @@ body {
   border: 1px solid var(--primary-border);
   animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .modal-form-card {
   max-width: 440px;
   text-align: left;
 }
-
 @keyframes modalPop {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
-
 .confirm-icon {
   width: 48px;
   height: 48px;
@@ -428,38 +365,32 @@ body {
   justify-content: center;
   margin: 0 auto 12px;
 }
-
 .icon-danger {
   background: var(--primary-light);
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .icon-success {
   background: var(--success-light);
   color: var(--success);
   border: 1px solid var(--success-border);
 }
-
 .admin-confirm-card h3 {
   margin: 0 0 8px 0;
   color: var(--primary);
   font-size: 18px;
 }
-
 .admin-confirm-card p {
   margin: 0 0 20px 0;
   color: var(--text-muted);
   font-size: 14px;
 }
-
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
-
 .close-btn {
   background: none;
   border: none;
@@ -471,29 +402,24 @@ body {
   align-items: center;
   justify-content: center;
 }
-
 .close-btn:hover {
   background: var(--primary-light);
 }
-
 .modal-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
 .input-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .input-group label {
   font-size: 13px;
   font-weight: 600;
   color: var(--primary);
 }
-
 .input-group input {
   padding: 10px 12px;
   border: 1px solid var(--border-input);
@@ -504,19 +430,16 @@ body {
   color: var(--primary);
   transition: var(--transition);
 }
-
 .input-group input:focus {
   border-color: var(--primary-hover);
   box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
 }
-
 .admin-modal-actions {
   display: flex;
   justify-content: center;
   gap: 12px;
   margin-top: 8px;
 }
-
 .btn-logout-confirm,
 .btn-success-confirm,
 .btn-cancel,
@@ -533,98 +456,75 @@ body {
   transition: var(--transition);
   white-space: nowrap;
 }
-
 .btn-logout-confirm,
 .admin-logout-btn {
   background: var(--primary);
   color: #ffffff;
   border: 1px solid var(--primary);
 }
-
 .btn-logout-confirm:hover,
 .admin-logout-btn:hover {
   background: var(--primary-hover);
 }
-
 .btn-success-confirm {
   background: var(--success);
   color: #ffffff;
   border: 1px solid var(--success);
 }
-
 .btn-success-confirm:hover {
   background: var(--success-hover);
 }
-
 .btn-cancel {
   background: #ffffff;
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .btn-cancel:hover {
   background: var(--primary-light);
 }
-
-/* =========================================================
-   ROBUST RESPONSIVE MEDIA QUERIES (Table & Cards)
-   ========================================================= */
-
 @media (max-width: 1024px) {
   .user-container {
     padding: 20px 14px;
   }
-  
   .user-card-wide {
     padding: 20px 16px;
   }
 }
-
 @media (max-width: 768px) {
   .user-header {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
   }
-
   .header-actions {
     width: 100%;
   }
-
   .add-btn, .logout-btn {
     flex: 1;
   }
-
   .table-controls {
     flex-direction: column;
     align-items: stretch;
   }
-
   .search-box {
     max-width: 100%;
     width: 100%;
   }
-
   .stats-badge {
     align-self: flex-start;
   }
 }
-
 @media (max-width: 640px) {
   .user-container {
     padding: 10px 6px;
   }
-
   .user-card-wide {
     padding: 14px 10px;
     border-radius: var(--radius-md);
   }
-
-  /* Table-ni Mobile Card Ko'rinishiga O'tkazish */
   .table-responsive {
     overflow-x: visible;
   }
-
   .user-table-horizontal, 
   .user-table-horizontal thead, 
   .user-table-horizontal tbody, 
@@ -633,14 +533,11 @@ body {
   .user-table-horizontal tr {
     display: block;
   }
-
-  /* Table Header-ni yashirish */
   .user-table-horizontal thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
-
   .user-table-horizontal tr {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -649,7 +546,6 @@ body {
     padding: 12px;
     box-shadow: 0 2px 8px rgba(220, 38, 38, 0.04);
   }
-
   .user-table-horizontal td {
     border-bottom: 1px dashed var(--primary-border);
     display: flex;
@@ -659,13 +555,10 @@ body {
     font-size: 13px;
     word-break: break-word;
   }
-
   .user-table-horizontal td:last-child {
     border-bottom: none;
     padding-top: 12px;
   }
-
-  /* data-label atributi orqali nom chiqarish */
   .user-table-horizontal td::before {
     content: attr(data-label);
     font-weight: 600;
@@ -676,12 +569,10 @@ body {
     margin-right: 12px;
     flex-shrink: 0;
   }
-
   .admin-modal-actions {
     flex-direction: column;
     gap: 8px;
   }
-
   .admin-modal-actions button {
     width: 100%;
   }

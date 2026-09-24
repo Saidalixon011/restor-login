@@ -14,18 +14,14 @@ const Profil = () => {
     lastName: 'Familiya',
     phone: '+998 90 000 00 00'
   };
-
   const [isOpen, setIsOpen] = useState(false);
   const [isOptionsSheetOpen, setIsOptionsSheetOpen] = useState(false);
-
   const toggleSettings = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <div className="profil-container">
       <ToastContainer limit={2} autoClose={2000} newestOnTop />
-
       <div className={`profil-card ${isOpen ? 'card-compact' : ''}`}>
         <div className="profil-header">
           <button className="profil-back-btn" onClick={() => navigate(-1)}>
@@ -35,12 +31,10 @@ const Profil = () => {
             <Settings size={20} />
           </button>
         </div>
-
         <div className="profil-info">
           <h2>{user.firstName} {user.lastName}</h2>
           <p>{user.phone}</p>
         </div>
-
         {isOpen && (
           <div className="profil-settings-panel">
             <button className="change-pass-btn" onClick={() => setIsOptionsSheetOpen(true)}>
@@ -49,8 +43,6 @@ const Profil = () => {
           </div>
         )}
       </div>
-
-      {/* Pastdan chiqadigan menyu (Bottom Sheet Modal) */}
       {isOptionsSheetOpen && (
         <div className="sheet-overlay" onClick={() => setIsOptionsSheetOpen(false)}>
           <div className="sheet-container" onClick={(e) => e.stopPropagation()}>

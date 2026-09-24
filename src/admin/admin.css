@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 :root {
   --primary: #dc2626; 
   --primary-hover: #b91c1c; 
@@ -23,19 +22,15 @@
   --shadow-modal: 0 10px 25px rgba(220, 38, 38, 0.15);
   --transition: all 0.2s ease;
 }
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   font-family: var(--font-family);
   background-color: var(--bg-main);
   color: var(--text-main);
 }
-
-/* Base Container */
 .admin-container {
   min-height: 100vh;
   background-color: var(--bg-main);
@@ -44,7 +39,6 @@ body {
   justify-content: center;
   align-items: flex-start;
 }
-
 .admin-card-wide {
   background: var(--bg-card);
   border-radius: var(--radius-xl);
@@ -55,8 +49,6 @@ body {
   padding: 28px;
   height: fit-content;
 }
-
-/* Responsive Header */
 .admin-header {
   display: flex;
   justify-content: space-between;
@@ -67,7 +59,6 @@ body {
   gap: 16px;
   flex-wrap: wrap;
 }
-
 .header-title {
   display: flex;
   align-items: center;
@@ -75,7 +66,6 @@ body {
   flex: 1;
   min-width: 240px;
 }
-
 .admin-icon-wrapper {
   background: var(--primary-light);
   color: var(--primary);
@@ -87,7 +77,6 @@ body {
   justify-content: center;
   flex-shrink: 0;
 }
-
 .admin-header h2 {
   margin: 0;
   color: var(--primary);
@@ -95,19 +84,16 @@ body {
   font-weight: 700;
   line-height: 1.2;
 }
-
 .admin-subtitle {
   margin: 4px 0 0;
   color: var(--text-muted);
   font-size: 13px;
 }
-
 .header-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 /* Buttons */
 .admin-logout-btn,
 .btn-logout-confirm,
@@ -124,31 +110,25 @@ body {
   transition: var(--transition);
   white-space: nowrap;
 }
-
 .admin-logout-btn,
 .btn-logout-confirm {
   background: var(--primary);
   color: #ffffff;
   border: 1px solid var(--primary);
 }
-
 .admin-logout-btn:hover,
 .btn-logout-confirm:hover {
   background: var(--primary-hover);
   color: #ffffff;
 }
-
 .btn-cancel {
   background: #ffffff;
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .btn-cancel:hover {
   background: var(--primary-light);
 }
-
-/* Controls & Search */
 .admin-controls {
   display: flex;
   justify-content: space-between;
@@ -157,14 +137,12 @@ body {
   gap: 16px;
   flex-wrap: wrap;
 }
-
 .admin-search-box {
   position: relative;
   flex: 1;
   min-width: 240px;
   max-width: 380px;
 }
-
 .search-icon {
   position: absolute;
   left: 12px;
@@ -173,7 +151,6 @@ body {
   color: var(--primary);
   pointer-events: none;
 }
-
 .admin-search-box input {
   width: 100%;
   padding: 10px 12px 10px 38px;
@@ -185,12 +162,10 @@ body {
   color: var(--primary);
   transition: var(--transition);
 }
-
 .admin-search-box input:focus {
   border-color: var(--primary-hover);
   box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
 }
-
 .admin-stats {
   background: var(--primary-light);
   color: var(--primary);
@@ -201,24 +176,19 @@ body {
   font-weight: 500;
   white-space: nowrap;
 }
-
 .admin-stats span {
   color: var(--primary);
   font-weight: 700;
 }
-
-/* Table Desktop Styling */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-
 .admin-table {
   width: 100%;
   border-collapse: collapse;
 }
-
 .admin-table th {
   background: var(--primary-light);
   color: var(--primary);
@@ -229,7 +199,6 @@ body {
   text-align: left;
   border-bottom: 1px solid var(--primary-border);
 }
-
 .admin-table td {
   padding: 14px 16px;
   text-align: left;
@@ -238,17 +207,13 @@ body {
   font-size: 14px;
   vertical-align: middle;
 }
-
 .admin-table tbody tr:hover {
   background-color: var(--bg-hover);
 }
-
 .admin-row-disabled {
   background-color: var(--bg-disabled);
   opacity: 0.65;
 }
-
-/* Badges & Text Buttons */
 .user-fullname-btn {
   background: transparent;
   border: none;
@@ -262,11 +227,9 @@ body {
   align-items: center;
   gap: 5px;
 }
-
 .user-fullname-btn:hover {
   color: var(--primary-hover);
 }
-
 .admin-badge {
   display: inline-block;
   padding: 4px 10px;
@@ -274,19 +237,16 @@ body {
   font-size: 12px;
   font-weight: 600;
 }
-
 .badge-active {
   background: #ffffff;
   color: var(--primary);
   border: 1px solid var(--primary);
 }
-
 .badge-deactive {
   background: var(--primary-light);
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .admin-power-btn {
   display: inline-flex;
   align-items: center;
@@ -300,26 +260,21 @@ body {
   cursor: pointer;
   transition: transform 0.1s ease, background-color 0.2s ease;
 }
-
 .btn-deactivate {
   background: var(--primary);
   color: #ffffff;
 }
-
 .btn-deactivate:hover {
   background: var(--primary-hover);
 }
-
 .btn-activate {
   background: #ffffff;
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .btn-activate:hover {
   background: var(--primary-light);
 }
-
 /* Modal */
 .admin-modal-overlay {
   position: fixed;
@@ -332,7 +287,6 @@ body {
   z-index: 1000;
   padding: 16px;
 }
-
 .admin-confirm-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -344,12 +298,10 @@ body {
   border: 1px solid var(--primary-border);
   animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 @keyframes modalPop {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
-
 .confirm-icon {
   width: 48px;
   height: 48px;
@@ -362,36 +314,26 @@ body {
   color: var(--primary);
   border: 1px solid var(--primary-border);
 }
-
 .admin-confirm-card h3 {
   margin: 0 0 8px 0;
   color: var(--primary);
   font-size: 18px;
 }
-
 .admin-confirm-card p {
   margin: 0 0 20px 0;
   color: var(--text-muted);
   font-size: 14px;
 }
-
 .admin-modal-actions {
   display: flex;
   justify-content: center;
   gap: 12px;
 }
-
 .admin-no-data {
   text-align: center;
   padding: 40px;
   color: var(--text-muted);
 }
-
-/* =========================================================
-   ROBUST RESPONSIVE MEDIA QUERIES (Header & Table)
-   ========================================================= */
-
-/* Tablet va kichik ekranlar (1024px dan kichik) */
 @media (max-width: 1024px) {
   .admin-container {
     padding: 20px 14px;
@@ -401,71 +343,53 @@ body {
     padding: 20px 16px;
   }
 }
-
-/* O'rtacha telefonlar va Planshetlar (768px dan kichik) */
 @media (max-width: 768px) {
   .admin-header {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
   }
-
   .header-actions {
     width: 100%;
   }
-
   .admin-logout-btn {
     width: 100%;
   }
-
   .admin-controls {
     flex-direction: column;
     align-items: stretch;
   }
-
   .admin-search-box {
     max-width: 100%;
     width: 100%;
   }
-
   .admin-stats {
     align-self: flex-start;
   }
 }
-
-/* Mobil qurilmalar (640px va undan kichik) */
 @media (max-width: 640px) {
   .admin-container {
     padding: 10px 6px;
   }
-
   .admin-card-wide {
     padding: 14px 10px;
     border-radius: var(--radius-md);
   }
-
-  /* Header Moslashuvi */
   .header-title {
     gap: 10px;
   }
-
   .admin-icon-wrapper {
     padding: 10px;
   }
-
   .admin-header h2 {
     font-size: 17px;
   }
-
   .admin-subtitle {
     font-size: 12px;
   }
-
-  /* Table-ni Karta Ko'rinishiga O'tkazish */
   .table-responsive {
     overflow-x: visible;
   }
-
   .admin-table, 
   .admin-table thead, 
   .admin-table tbody, 
@@ -474,14 +398,11 @@ body {
   .admin-table tr {
     display: block;
   }
-
-  /* Jadval tepasidagi ustun nomlarini yashirish */
   .admin-table thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
-
   .admin-table tr {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -490,7 +411,6 @@ body {
     padding: 12px;
     box-shadow: 0 2px 8px rgba(220, 38, 38, 0.04);
   }
-
   .admin-table td {
     border-bottom: 1px dashed var(--primary-border);
     display: flex;
@@ -500,14 +420,11 @@ body {
     font-size: 13px;
     word-break: break-word;
   }
-
   .admin-table td:last-child {
     border-bottom: none;
     padding-top: 12px;
     padding-bottom: 0;
   }
-
-  /* Agar HTML td laringizda data-label="Ustun nomi" bo'lsa avtomatik sarlavha chiqaradi */
   .admin-table td::before {
     content: attr(data-label);
     font-weight: 600;
@@ -518,17 +435,14 @@ body {
     margin-right: 12px;
     flex-shrink: 0;
   }
-
   .admin-power-btn {
     width: 100%;
     padding: 9px 12px;
   }
-
   .admin-modal-actions {
     flex-direction: column;
     gap: 8px;
   }
-
   .admin-modal-actions button {
     width: 100%;
   }

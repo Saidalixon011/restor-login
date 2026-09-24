@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .profil-container {
   min-height: 100vh;
   background-color: #ffffff;
@@ -8,7 +13,6 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   position: relative;
 }
-
 .profil-card {
   width: 100%;
   max-width: 400px;
@@ -22,18 +26,15 @@
   flex-direction: column;
   gap: 16px;
 }
-
 .profil-card.card-compact {
   max-width: 420px;
 }
-
 .profil-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
-
 .profil-back-btn {
   display: flex;
   align-items: center;
@@ -47,12 +48,10 @@
   border-radius: 8px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-
 .profil-back-btn:hover {
   background-color: #fef2f2;
   color: #b91c1c;
 }
-
 .settings-toggle-btn {
   background: #fef2f2;
   border: 1px solid #fca5a5;
@@ -67,35 +66,29 @@
   transition: all 0.2s ease;
   margin-left: auto;
 }
-
 .settings-toggle-btn:hover {
   background: #dc2626;
   color: #ffffff;
   transform: translateY(-1px);
 }
-
 .settings-toggle-btn:active {
   transform: translateY(0);
 }
-
 .profil-info {
   text-align: center;
   word-break: break-word;
 }
-
 .profil-info h2 {
   margin: 0 0 6px 0;
   color: #dc2626;
   font-size: 20px;
 }
-
 .profil-info p {
   margin: 0;
   color: #dc2626;
   font-size: 14px;
   opacity: 0.8;
 }
-
 .profil-settings-panel {
   border-top: 1px solid #fca5a5;
   padding-top: 16px;
@@ -103,7 +96,6 @@
   flex-direction: column;
   gap: 10px;
 }
-
 .change-pass-btn {
   display: flex;
   align-items: center;
@@ -119,7 +111,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 .change-pass-btn:hover {
   background: #dc2626;
   color: #ffffff;
@@ -130,8 +121,6 @@
 .change-pass-btn:active {
   transform: translateY(0);
 }
-
-/* Bottom Sheet Modal */
 .sheet-overlay {
   position: fixed;
   inset: 0;
@@ -142,7 +131,6 @@
   justify-content: center;
   z-index: 999;
 }
-
 .sheet-container {
   width: 100%;
   max-width: 450px;
@@ -155,7 +143,6 @@
   box-shadow: 0 -8px 25px rgba(220, 38, 38, 0.12);
   animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 @keyframes slideUp {
   from {
     transform: translateY(100%);
@@ -164,7 +151,6 @@
     transform: translateY(0);
   }
 }
-
 .sheet-header {
   position: relative;
   display: flex;
@@ -173,7 +159,6 @@
   margin-bottom: 20px;
   padding-top: 8px;
 }
-
 .sheet-drag-handle {
   position: absolute;
   top: -6px;
@@ -184,14 +169,12 @@
   background: #fca5a5;
   border-radius: 4px;
 }
-
 .sheet-header h3 {
   margin: 0;
   color: #dc2626;
   font-size: 16px;
   font-weight: 700;
 }
-
 .sheet-close-btn {
   background: transparent;
   border: none;
@@ -204,18 +187,14 @@
   justify-content: center;
   transition: background-color 0.2s ease;
 }
-
 .sheet-close-btn:hover {
   background-color: #fef2f2;
 }
-
 .sheet-actions {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-
-/* Faol va hover effekti bor variantlar uchun */
 .sheet-option-btn {
   width: 100%;
   display: flex;
@@ -231,7 +210,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 .sheet-option-btn:hover {
   background: #dc2626;
   color: #ffffff;
@@ -239,18 +217,14 @@
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
 }
-
 .sheet-option-btn:active {
   transform: translateY(0);
 }
-
-/* Ishlamaydigan (disabled) tugmalar uchun stillar */
 .sheet-option-btn.disabled {
   opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none;
 }
-/* Bottom Sheet ichidagi oddiy (faol) tugmalar uchun hover effekti */
 .sheet-option-btn {
   width: 100%;
   display: flex;
@@ -266,7 +240,6 @@
   cursor: pointer;
   transition: var(--transition);
 }
-
 .sheet-option-btn:hover {
   background: var(--primary);
   color: #ffffff;
@@ -274,60 +247,47 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
 }
-
 .sheet-option-btn:active {
   transform: translateY(0);
 }
-
-/* Ishlamaydigan (disabled) tugmalar uchun hover va ko'rinish */
 .sheet-option-btn.disabled,
 .sheet-option-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  pointer-events: auto; /* Hover ishlasin, lekin bosib bo'lmasin */
+  pointer-events: auto;
   transition: var(--transition);
 }
-
-/* Disabled tugmaga sichqoncha olib borilgandagi hover effekti */
 .sheet-option-btn.disabled:hover,
 .sheet-option-btn:disabled:hover {
-  background: #fecaca; /* Biroz to'qroq qizil rang */
+  background: #fecaca;
   border-color: var(--primary);
   color: var(--primary-hover);
-  transform: none; /* Siljimaydi */
+  transform: none;
   box-shadow: none;
 }
-/* ====================================
-   MOBILE RESPONSIVE (Telefonlar uchun)
-   ==================================== */
 @media (max-width: 480px) {
   .profil-container {
     padding: 12px;
     align-items: flex-start;
   }
-
   .profil-card,
   .profil-card.card-compact {
     max-width: 100%;
     padding: 18px 16px;
     border-radius: 14px;
   }
-
   .profil-info h2 {
     font-size: 18px;
   }
-
   .profil-info p {
     font-size: 13px;
   }
-
   .sheet-container {
     max-width: 100%;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     padding: 16px 16px 24px;
   }
-
   .sheet-option-btn {
     padding: 14px 16px;
     font-size: 14px;
