@@ -1,6 +1,7 @@
 import Login from "../login/login";
 import Admin from "../admin/Admin";
 import User from "../user/User";
+import Profil from "../profil/Profil";
 import ProtectedRoute from "../protectedroute/ProtectedRoute";
 
 export const routes = [
@@ -21,6 +22,14 @@ export const routes = [
     element: (
       <ProtectedRoute allowedRole="user">
         <User />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/profil',
+    element: (
+      <ProtectedRoute allowedRole={["admin", "user"]}>
+        <Profil />
       </ProtectedRoute>
     ),
   },

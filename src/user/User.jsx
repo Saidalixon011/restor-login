@@ -19,6 +19,7 @@ const User = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deletingUser, setDeletingUser] = useState(null);
   const [attendanceModal, setAttendanceModal] = useState({ isOpen: false, user: null, status: null });
+
   useEffect(() => {
     const loggedInUserRaw = localStorage.getItem('currentUser');
     let loggedInUser = loggedInUserRaw ? JSON.parse(loggedInUserRaw) : null;
@@ -56,9 +57,11 @@ const User = () => {
       });
     }
   }, []);
+
   useEffect(() => {
     localStorage.setItem('appUsersList', JSON.stringify(usersList));
   }, [usersList]);
+
   const handlePhoneChange = (e) => {
     let input = e.target.value;
     let digits = input.replace(/\D/g, '');
@@ -73,10 +76,12 @@ const User = () => {
     if (digits.length > 7) formatted += ' ' + digits.slice(7, 9);
     setFormData({ ...formData, phone: formatted });
   };
+
   const openAttendanceModal = (user, status) => {
     if (user.isActive === false) return;
     setAttendanceModal({ isOpen: true, user, status });
   };
+
   const confirmAttendance = () => {
     const { user, status } = attendanceModal;
     if (!user || !status) return;
@@ -97,6 +102,7 @@ const User = () => {
     );
     setAttendanceModal({ isOpen: false, user: null, status: null });
   };
+
   const openUserModal = (user = null) => {
     if (user && user.isActive === false) return;
     if (user) {
@@ -112,6 +118,7 @@ const User = () => {
     }
     setIsUserModalOpen(true);
   };
+
   const handleSaveUser = (e) => {
     e.preventDefault();
     const digits = formData.phone.replace(/\D/g, '').slice(3);
@@ -139,11 +146,13 @@ const User = () => {
     setIsUserModalOpen(false);
     setFormData({ firstName: '', lastName: '', phone: '+998 ' });
   };
+
   const openDeleteModal = (user) => {
     if (user.isActive === false) return;
     setDeletingUser(user);
     setIsDeleteModalOpen(true);
   };
+
   const confirmDelete = () => {
     if (deletingUser) {
       setUsersList((prev) => prev.filter((u) => u.id !== deletingUser.id));
@@ -152,6 +161,7 @@ const User = () => {
     setIsDeleteModalOpen(false);
     setDeletingUser(null);
   };
+
   const confirmLogout = () => {
     localStorage.removeItem('userRole');
     localStorage.removeItem('currentUser');
@@ -160,9 +170,11 @@ const User = () => {
     setIsLogoutModalOpen(false);
     navigate('/', { replace: true });
   };
+
   const filteredUsers = usersList.filter((u) =>
     `${u.firstName} ${u.lastName} ${u.phone}`.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   return (
     <div className="user-container">
       <ToastContainer limit={2} autoClose={1500} newestOnTop />
@@ -186,6 +198,7 @@ const User = () => {
             </button>
           </div>
         </div>
+
         <div className="table-controls">
           <div className="search-box">
             <Search size={18} className="search-icon" />
@@ -200,6 +213,7 @@ const User = () => {
             Jami: <span>{filteredUsers.length} ta</span>
           </div>
         </div>
+
         {filteredUsers.length > 0 ? (
           <div className="table-responsive">
             <table className="user-table-horizontal">
@@ -219,8 +233,8 @@ const User = () => {
                   const firstLetter = user.firstName ? user.firstName.charAt(0).toUpperCase() : 'U';
                   return (
                     <tr key={user.id} className={isDeactivated ? 'user-row-disabled' : ''}>
-                      <td>{index + 1}</td>
-                      <td>
+                      <td data-label="T/r">{index + 1}</td>
+                      <td data-label="Foydalanuvchi">
                         <div className="user-name-cell">
                           <div className="avatar-circle">{firstLetter}</div>
                           <div>
@@ -228,13 +242,13 @@ const User = () => {
                           </div>
                         </div>
                       </td>
-                      <td>{user.phone}</td>
-                      <td>
+                      <td data-label="Telefon raqam">{user.phone}</td>
+                      <td data-label="Akkaunt holati">
                         <span className={`badge ${isDeactivated ? 'badge-deactive' : 'badge-active'}`}>
                           {isDeactivated ? 'Dezaktiv (Muzlatilgan)' : 'Aktiv'}
                         </span>
                       </td>
-                      <td>
+                      <td data-label="Davomat" style={{ textAlign: 'center' }}>
                         {isDeactivated ? (
                           <div className="attendance-blocked">
                             <span>Muzlatilgan</span>
@@ -256,7 +270,7 @@ const User = () => {
                           </div>
                         )}
                       </td>
-                      <td>
+                      <td data-label="Amallar" style={{ textAlign: 'center' }}>
                         <div className="action-buttons">
                           <button
                             className="icon-btn edit-icon-btn"
@@ -286,9 +300,11 @@ const User = () => {
           <div className="no-data-box">Hozircha foydalanuvchilar mavjud emas.</div>
         )}
       </div>
+
+      {/* Foydalanuvchi Qo'shish / Tahrirlash Modali */}
       {isUserModalOpen && (
-        <div className="modal-overlay" onClick={() => setIsUserModalOpen(false)}>
-          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+        <div className="admin-modal-overlay" onClick={() => setIsUserModalOpen(false)}>
+          <div className="admin-confirm-card modal-form-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>{editingUserId ? "Foydalanuvchini Tahrirlash" : "Yangi Foydalanuvchi Qo'shish"}</h3>
               <button className="close-btn" onClick={() => setIsUserModalOpen(false)}>
@@ -326,62 +342,69 @@ const User = () => {
                   required
                 />
               </div>
-              <div className="modal-actions">
-                <button type="button" className="cancel-btn" onClick={() => setIsUserModalOpen(false)}>Bekor qilish</button>
-                <button type="submit" className="save-btn">Saqlash</button>
+              <div className="admin-modal-actions">
+                <button type="button" className="btn-cancel" onClick={() => setIsUserModalOpen(false)}>Bekor qilish</button>
+                <button type="submit" className="admin-logout-btn">Saqlash</button>
               </div>
             </form>
           </div>
         </div>
       )}
+
+      {/* Davomat Modali */}
       {attendanceModal.isOpen && (
-        <div className="modal-overlay" onClick={() => setAttendanceModal({ isOpen: false, user: null, status: null })}>
-          <div className="confirm-modal-card mini-modal" onClick={(e) => e.stopPropagation()}>
-            <div className={`confirm-icon ${attendanceModal.status === 'present' ? 'present-icon' : 'absent-icon'}`}>
-              {attendanceModal.status === 'present' ? <CheckCircle size={22} /> : <XCircle size={22} />}
+        <div className="admin-modal-overlay" onClick={() => setAttendanceModal({ isOpen: false, user: null, status: null })}>
+          <div className="admin-confirm-card" onClick={(e) => e.stopPropagation()}>
+            <div className={`confirm-icon ${attendanceModal.status === 'present' ? 'icon-success' : 'icon-danger'}`}>
+              {attendanceModal.status === 'present' ? <CheckCircle size={24} /> : <XCircle size={24} />}
             </div>
-            <h4>Davomatni belgilash</h4>
+            <h3>Davomatni belgilash</h3>
             <p>
               <strong>{attendanceModal.user?.firstName} {attendanceModal.user?.lastName}</strong> —{" "}
-              {attendanceModal.status === 'present' ? (
-                <span className="status-present-text">Keldi</span>
-              ) : (
-                <span className="status-absent-text">Kelmadi</span>
-              )} deb belgilansinmi?
+              <span>{attendanceModal.status === 'present' ? 'Keldi' : 'Kelmadi'}</span> deb belgilansinmi?
             </p>
-            <div className="modal-actions">
-              <button className="cancel-btn" onClick={() => setAttendanceModal({ isOpen: false, user: null, status: null })}>Yo'q</button>
-              <button className="save-btn" onClick={confirmAttendance}>Ha, Tasdiqlayman</button>
+            <div className="admin-modal-actions">
+              <button className="btn-cancel" onClick={() => setAttendanceModal({ isOpen: false, user: null, status: null })}>Yo'q</button>
+              <button
+                className={attendanceModal.status === 'present' ? 'btn-success-confirm' : 'btn-logout-confirm'}
+                onClick={confirmAttendance}
+              >
+                Ha, Tasdiqlayman
+              </button>
             </div>
           </div>
         </div>
       )}
+
+      {/* O'chirish Modali */}
       {isDeleteModalOpen && (
-        <div className="modal-overlay" onClick={() => setIsDeleteModalOpen(false)}>
-          <div className="confirm-modal-card mini-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="confirm-icon delete-icon">
-              <Trash2 size={22} />
+        <div className="admin-modal-overlay" onClick={() => setIsDeleteModalOpen(false)}>
+          <div className="admin-confirm-card" onClick={(e) => e.stopPropagation()}>
+            <div className="confirm-icon icon-danger">
+              <Trash2 size={24} />
             </div>
-            <h4>Foydalanuvchini o'chirish</h4>
+            <h3>Foydalanuvchini o'chirish</h3>
             <p><strong>{deletingUser?.firstName} {deletingUser?.lastName}</strong> o'chiriladi. Ishonchingiz komilmi?</p>
-            <div className="modal-actions">
-              <button className="cancel-btn" onClick={() => setIsDeleteModalOpen(false)}>Bekor qilish</button>
-              <button className="confirm-delete-btn" onClick={confirmDelete}>O'chirish</button>
+            <div className="admin-modal-actions">
+              <button className="btn-cancel" onClick={() => setIsDeleteModalOpen(false)}>Bekor qilish</button>
+              <button className="btn-logout-confirm" onClick={confirmDelete}>O'chirish</button>
             </div>
           </div>
         </div>
       )}
+
+      {/* Tizimdan Chiqish Modali */}
       {isLogoutModalOpen && (
-        <div className="modal-overlay" onClick={() => setIsLogoutModalOpen(false)}>
-          <div className="confirm-modal-card mini-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="confirm-icon logout-icon">
-              <LogOut size={22} />
+        <div className="admin-modal-overlay" onClick={() => setIsLogoutModalOpen(false)}>
+          <div className="admin-confirm-card" onClick={(e) => e.stopPropagation()}>
+            <div className="confirm-icon icon-danger">
+              <LogOut size={24} />
             </div>
-            <h4>Tizimdan chiqish</h4>
+            <h3>Tizimdan chiqish</h3>
             <p>Tizimdan chiqmoqchimisiz?</p>
-            <div className="modal-actions">
-              <button className="cancel-btn" onClick={() => setIsLogoutModalOpen(false)}>Yo'q</button>
-              <button className="confirm-logout-btn" onClick={confirmLogout}>Ha, Chiqish</button>
+            <div className="admin-modal-actions">
+              <button className="btn-cancel" onClick={() => setIsLogoutModalOpen(false)}>Yo'q</button>
+              <button className="btn-logout-confirm" onClick={confirmLogout}>Ha, Chiqish</button>
             </div>
           </div>
         </div>
@@ -389,4 +412,5 @@ const User = () => {
     </div>
   );
 };
+
 export default User;

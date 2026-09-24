@@ -4,6 +4,7 @@ import { LogOut, Power, ShieldCheck, Search } from 'lucide-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './admin.css';
+
 const Admin = () => {
   const navigate = useNavigate();
   const [usersList, setUsersList] = useState(() => {
@@ -12,9 +13,11 @@ const Admin = () => {
   });
   const [searchTerm, setSearchTerm] = useState('');
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+
   useEffect(() => {
     localStorage.setItem('appUsersList', JSON.stringify(usersList));
   }, [usersList]);
+
   const toggleUserStatus = (id) => {
     toast.dismiss();
     setUsersList((prev) =>
@@ -26,19 +29,11 @@ const Admin = () => {
             toast.success(`${fullName} aktivlashtirildi!`, {
               position: "top-right",
               autoClose: 1500,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: true,
             });
           } else {
             toast.warn(`${fullName} dezaktiv qilindi!`, {
               position: "top-right",
               autoClose: 1500,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: true,
             });
           }
           return { ...u, isActive: updatedStatus };
@@ -47,17 +42,37 @@ const Admin = () => {
       })
     );
   };
+
   const confirmLogout = () => {
     localStorage.removeItem('userRole');
     setIsLogoutModalOpen(false);
     navigate('/', { replace: true });
   };
+
+  const goToProfile = (user) => {
+    // Agar foydalanuvchi dezaktiv qilingan bo'lsa, profilga kirmaydi
+    if (user.isActive === false) {
+      toast.dismiss();
+      toast.error("Ushbu foydalanuvchi dezaktiv qilingan! Profilga kirish taqiqlangan.", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+      return;
+    }
+
+    if (!localStorage.getItem('userRole')) {
+      localStorage.setItem('userRole', 'admin');
+    }
+    navigate('/profil', { state: { user } });
+  };
+
   const filteredUsers = usersList.filter((u) =>
     `${u.firstName} ${u.lastName} ${u.phone}`.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   return (
     <div className="admin-container">
-      <ToastContainer limit={2} autoClose={1500} newestOnTop />
+      <ToastContainer limit={2} autoClose={2000} newestOnTop />
       <div className="admin-card-wide">
         <div className="admin-header">
           <div className="header-title">
@@ -95,8 +110,7 @@ const Admin = () => {
               <thead>
                 <tr>
                   <th>T/r</th>
-                  <th>Ism</th>
-                  <th>Familiya</th>
+                  <th>Foydalanuvchi (Ism / Familiya)</th>
                   <th>Telefon raqam</th>
                   <th>Holati</th>
                   <th style={{ textAlign: 'center' }}>Aktivlikni boshqarish</th>
@@ -108,8 +122,12 @@ const Admin = () => {
                   return (
                     <tr key={user.id} className={isDeactivated ? 'admin-row-disabled' : ''}>
                       <td>{index + 1}</td>
-                      <td><strong>{user.firstName}</strong></td>
-                      <td><strong>{user.lastName}</strong></td>
+                      <td>
+                        <button className="user-fullname-btn" onClick={() => goToProfile(user)}>
+                          <span>{user.firstName}</span>
+                          <span>{user.lastName}</span>
+                        </button>
+                      </td>
                       <td>{user.phone}</td>
                       <td>
                         <span className={`admin-badge ${isDeactivated ? 'badge-deactive' : 'badge-active'}`}>
@@ -157,4 +175,5 @@ const Admin = () => {
     </div>
   );
 };
+
 export default Admin;
